@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Retro Snake — Neon Grid</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Speaker (top-right) -->
+  <button id="btnMute" class="speaker" aria-label="Toggle music">🔊</button>
+
+  <!-- Main Menu -->
+  <div id="menu" class="overlay">
+    <div class="menu-panel">
+      <h1 class="title">SNAKE</h1>
+      <button id="startBtn" class="big">START</button>
+
+      <div class="menu-row">
+        <button id="optionsBtn" class="small">OPTIONS</button>
+        <button id="exitBtn" class="small">EXIT</button>
+      </div>
+
+      <div id="optionsPanel" class="options hidden">
+        <label class="opt-row">Difficulty:
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+
+        <label class="opt-row">Mode:
+          <select id="mode">
+            <option value="wrap" selected>Wrap</option>
+            <option value="walls">Walls</option>
+          </select>
+        </label>
+
+        <small class="note">Music starts when you press START (browser autoplay rules).</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game stage -->
+  <div class="stage">
+    <canvas id="gameCanvas" aria-label="Snake game"></canvas>
+
+    <div class="hud">
+      <div>Score: <span id="score">0</span></div>
+      <div>Len: <span id="len">1</span></div>
+      <div>Speed: <span id="spd">—</span></div>
+    </div>
+
+    <!-- Touch controls (only shown on touch/small screens) -->
+    <div id="touchControls" class="touch hidden" aria-hidden="true">
+      <div class="row"><button data-dir="up" class="dir">▲</button></div>
+      <div class="row">
+        <button data-dir="left" class="dir">◀</button>
+        <button data-dir="down" class="dir">▼</button>
+        <button data-dir="right" class="dir">▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Over overlay -->
+  <div id="gameOverScreen" class="game-over hidden" role="dialog" aria-hidden="true">
+    <h1 class="game-over-title">GAME OVER</h1>
+    <div id="finalScore" class="final-score">Score: 0</div>
+    <div class="game-over-buttons">
+      <button id="btnRestart">RESTART</button>
+      <button id="btnBackMenu">MENU</button>
+    </div>
+  </div>
+
+  <!-- Sounds: chiptune bg + chomp -->
+  <audio id="bgMusic" loop>
+  <source src="retro.mp3" type="audio/mpeg">
+</audio>
+  <audio id="eatSound" preload="auto" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
